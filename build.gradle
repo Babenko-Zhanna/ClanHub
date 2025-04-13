@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    testCompileOnly 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+    implementation 'org.testng:testng:7.11.0'
+
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.1'
+
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.12.1'
+
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+
+    implementation 'ch.qos.logback:logback-classic:1.5.16'
+    implementation 'org.apache.commons:commons-csv:1.9.0'
+
+    implementation 'org.seleniumhq.selenium:selenium-java:4.31.0'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.9.3'
+}
+
+test {
+    useTestNG()
+    systemProperty "file.encoding", "UTF-8"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+def registerTask(String taskName, String suitePath) {
+    tasks.register(taskName, Test) {
+        useTestNG() {
+            suites suitePath
+        }
+        if (project.hasProperty('browser')) {
+            systemProperty 'browser', "${browser}"
+        }
+    }
+}
+
+registerTask('smoke', 'src/test/resources/smoke.xml')
+registerTask('regression', 'src/test/resources/regression.xml')
+registerTask('api', 'src/test/resources/api.xml')
