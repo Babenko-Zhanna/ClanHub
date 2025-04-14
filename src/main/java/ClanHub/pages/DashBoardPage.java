@@ -126,6 +126,7 @@ public class DashBoardPage extends BasePage {
     WebElement taskList;
 
     public void verifyTaskIsCompleted(String taskTitle) {
+        closeModals();
         wait.until(ExpectedConditions.elementToBeClickable(completedButton));
         click(completedButton);
         click(todayBtn);
