@@ -30,7 +30,7 @@ public class TaskManagementGUITests extends TestBase {
     public void taskViewOkBtnPositiveTest() {
         taskTitle = "TaskToCheck";
         new DashBoardPage(app.driver, app.wait)
-                .createTask(taskTitle, "18-05-2025")
+                .createTask(taskTitle, "18-04-2025")
                 .viewTheTask(taskTitle)
                 .clickOkBtn()
                 .verifyPopupWindowIsClosed();

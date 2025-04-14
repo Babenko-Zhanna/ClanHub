@@ -1,10 +1,8 @@
 package ClanHub.pages;
 
 import ClanHub.core.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -34,7 +32,10 @@ public class DashBoardPage extends BasePage {
     public DashBoardPage createTask(String taskName, String dueDate) {
         click(addTaskBtn);
         type(taskTitleInput, taskName);
-        type(dateInput, dueDate);
+        Actions action = new Actions(driver);
+        action.moveToElement(dateInput);
+        action.click();
+        action.sendKeys(dueDate).build().perform();
         click(checkmarkIcon);
         clickOkBtn();
         return this;
