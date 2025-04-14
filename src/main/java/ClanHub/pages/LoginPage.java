@@ -20,10 +20,23 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-btn")
     WebElement loginBtn;
 
-    public DashBoardPage loginUser() {
+    public void loginValidUser() {
         type(email, "clanHubEmail@grr.la");
         type(password, "Password1#");
         click(loginBtn);
-        return new DashBoardPage(driver, wait);
+    }
+
+    @FindBy(id = "forgot-password-link")
+    WebElement forgotPasswordLink;
+
+    public void clickForgotPassword() {
+        click(forgotPasswordLink);
+    }
+
+    public ProfilePage loginWithNewPassword(String newPassword) {
+        type(email, "clanHubEmail@guerrillamailblock.com");
+        type(password, newPassword);
+        click(loginBtn);
+        return new ProfilePage(driver, wait);
     }
 }

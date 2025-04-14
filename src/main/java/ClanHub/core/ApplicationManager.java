@@ -20,7 +20,7 @@ public class ApplicationManager {
     public BasePage basePage;
 
     public void init() {
-        String browser = System.getProperty("browser", "edge");
+        String browser = System.getProperty("browser", "chrome");
         switch (browser.toLowerCase()) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();

@@ -5,6 +5,7 @@
         <classes>
             <class name="ClanHub.GUI.RegistrationGUITests"/>
             <class name="ClanHub.GUI.TaskManagementGUITests"/>
+            <class name="ClanHub.GUI.ResetPasswordGUITests"/>
         </classes>
     </test>
 </suite>

@@ -9,6 +9,12 @@
                 </methods>
             </class>
 
+            <class name="ClanHub.GUI.ResetPasswordGUITests">
+                <methods>
+                    <include name=".*Positive.*"/>
+                </methods>
+            </class>
+
             <class name="ClanHub.GUI.TaskManagementGUITests"/>
         </classes>
     </test>

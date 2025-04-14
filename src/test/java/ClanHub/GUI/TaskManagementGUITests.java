@@ -12,7 +12,7 @@ public class TaskManagementGUITests extends TestBase {
     @BeforeMethod
     public void precondition() {
         new HomePage(app.driver, app.wait).goToLoginPage()
-                .loginUser();
+                .loginValidUser();
     }
 
     private String taskTitle;
